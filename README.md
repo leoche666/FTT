@@ -54,6 +54,19 @@ web测试demo：在Example/SeleniumSample下(暂时还没更新)
 2.FTT工具是我业余时间开发的，或者还有很多bug，假如你发现了bug你可以自行修复，或者可以联系我，下面是我的联系方法。
 
 
+###可以这样写你们测试用例
+![image](https://github.com/leoche666/FTT/blob/master/img-folder/xml.png)
+
+###这是运行时的日志
+![image](https://github.com/leoche666/FTT/blob/master/img-folder/log.png)
+
+###这是运行结束之后的report
+![image](https://github.com/leoche666/FTT/blob/master/img-folder/Interface_report.png)
+
+![image](https://github.com/leoche666/FTT/blob/master/img-folder/error_report.png)
+
+
+
 ###Contact
 Email| Author
 --------------|-------------
