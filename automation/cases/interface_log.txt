@@ -1,0 +1,20 @@
+
+***LOG START***
+
+2016-09-08 15:07:26 : Initiate the environment in Group.Setup
+vid:1 lvl:1  cid:0  dsc:Verify can query the cart if log in
+2016-09-08 15:07:26 : 官网登录成功
+Verify can query the cart if log in : VAR_PASS
+
+2016-09-08 15:07:26 : Clean the environment in Group.Cleanup
+Vars expected    :[1]
+Vars passed      :[1]
+Vars aborted     :[0]
+Vars failed      :[0]
+Grps failed      :[0]
+Grps aborted     :[0]
+Vars unsupported :[0]
+Vars Not Run     :[0]
+
+***LOG DONE***
+

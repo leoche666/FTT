@@ -1,0 +1,83 @@
+
+***LOG START***
+
+2016-09-08 15:58:58 : Initiate the environment in Group.Setup
+vid:1 lvl:1  cid:0  dsc:Verify the website can buy one newest goods
+2016-09-08 15:59:11 : Flows.Setup
+2016-09-08 15:59:11 : key:click_login_a_xpath val://*[@id='top']/div/div/div/a[1] in Flows.Setup
+2016-09-08 15:59:12 : key:sendkeys_username_et_id val:13813758106,J_UserName in Flows.Setup
+2016-09-08 15:59:13 : key:sendkeys_password_et_id val:82533923cl,J_UserPassword in Flows.Setup
+2016-09-08 15:59:14 : key:click_login_bt_id val:J_Login in Flows.Setup
+2016-09-08 15:59:15 : Flows.Run
+2016-09-08 15:59:15 : key:url_product val:http://www.thebeastshop.com/item/detail/102161471.htm in Flows.Run
+2016-09-08 15:59:17 : key:click_add_trolley_id val:add2Cart in Flows.Run
+2016-09-08 15:59:18 : key:click_a_lookTrolley_xpath val:/html/body/div[@id='cart_add']/div[@class='in']/div[@class='add_cart']/div[@class='right']/a in Flows.Run
+2016-09-08 15:59:19 : key:click_bt_checkout_id val:J_submit in Flows.Run
+2016-09-08 15:59:20 : key:click_input_adress_syn val:id=addressLi,xpath=.//input in Flows.Run
+2016-09-08 15:59:30 : Message: 
+
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/manage.py", line 81, in <module>
+    start()
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/manage.py", line 65, in start
+    ThreadConfig()(**kwargs)
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Thread.py", line 22, in __call__
+    Config(xml=xml,log=log,html=html,opt=opt,**settings.DATABASES)()
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 80, in __call__
+    self.runServerByVid(self.ctx.RunModelVal)
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 153, in runServerByVid
+    self.runServer(vid)
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 129, in runServer
+    if self.next(gVar,'_FTT_Setup_') and self.next(gVar,'_FTT_Run_') and self.next(gVar,'_FTT_Verify_'):
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 104, in next
+    if generator.send(fun):
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 101, in run
+    yield self.gather(flow_methods[fun],self.ctx) if fun in flow_methods else True
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Gather.py", line 42, in __call__
+    fun(ctx)
+  File "../../automation/FTT/Frmwrk/Frmwrk.py", line 147, in inner_deco
+    func(*args, **kwargs)
+  File "/Users/leoche/Documents/TheBeastShop/automation/ui/main/Flows.py", line 34, in Run
+    find_element_by_suffix(self.driver,key,val,self.buffer)
+  File "../../automation/common/SeleniumExt.py", line 137, in find_element_by_suffix
+    raise VarAbort(ex.__str__())
+2016-09-08 15:59:30 : Flows.Cleanup
+2016-09-08 15:59:30 : key:post_cancelOrder val:13813758106,82533923cl,post,http://www.thebeastshop.com/order/orderCancel.htm,orderNo,$get_myOrder_xpath in Flows.Cleanup
+2016-09-08 15:59:30 : u'get_myOrder_xpath'
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/manage.py", line 81, in <module>
+    start()
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/manage.py", line 65, in start
+    ThreadConfig()(**kwargs)
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Thread.py", line 22, in __call__
+    Config(xml=xml,log=log,html=html,opt=opt,**settings.DATABASES)()
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 80, in __call__
+    self.runServerByVid(self.ctx.RunModelVal)
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 153, in runServerByVid
+    self.runServer(vid)
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 135, in runServer
+    self.next(gVar, '_FTT_Cleanup_')
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 104, in next
+    if generator.send(fun):
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Control.py", line 101, in run
+    yield self.gather(flow_methods[fun],self.ctx) if fun in flow_methods else True
+  File "/Users/leoche/Documents/TheBeastShop/automation/FTT/Frmwrk/Gather.py", line 42, in __call__
+    fun(ctx)
+  File "../../automation/FTT/Frmwrk/Frmwrk.py", line 161, in inner_deco
+    func(*args, **kwargs)
+  File "/Users/leoche/Documents/TheBeastShop/automation/ui/main/Flows.py", line 53, in Cleanup
+    find_element_by_suffix(self.driver,key,val,self.buffer)
+  File "../../automation/common/SeleniumExt.py", line 137, in find_element_by_suffix
+    raise VarAbort(ex.__str__())
+Verify the website can buy one newest goods : VAR_ABORT
+
+2016-09-08 15:59:30 : Clean the environment in Group.Cleanup
+Vars expected    :[1]
+Vars passed      :[0]
+Vars aborted     :[2]
+Vars failed      :[0]
+Grps failed      :[0]
+Grps aborted     :[0]
+Vars unsupported :[0]
+Vars Not Run     :[0]
+
+***LOG DONE***
+

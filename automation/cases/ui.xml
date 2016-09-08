@@ -1,0 +1,46 @@
+<varmap assembly="" contact="673965587@qq.com" dsc="functionality test helper" owner="LeonChen" xmlns="https://github.com/leoche666/VarmapTemplate/functionTestTemplate.xml">
+ <!--Start======Verify the website can buy one newest goods-->
+  <snippet id="newest_product_setup">
+    <rec key="click_login_a_xpath">//*[@id='top']/div/div/div/a[1]</rec>
+    <rec key="sendkeys_username_et_id">13813758106,J_UserName</rec>
+    <rec key="sendkeys_password_et_id">82533923cl,J_UserPassword</rec>
+    <rec key="click_login_bt_id">J_Login</rec>
+  </snippet>
+
+  <snippet id="newest_product_run">
+    <rec key="url_product">http://www.thebeastshop.com/item/detail/102161471.htm</rec>
+    <rec key="click_add_trolley_id">add2Cart</rec>
+    <rec key="click_a_lookTrolley_xpath">/html/body/div[@id='cart_add']/div[@class='in']/div[@class='add_cart']/div[@class='right']/a</rec>
+    <!--<rec key="getAttribute_cartId_id">value,item_check</rec>-->
+    <rec key="click_bt_checkout_id">J_submit</rec>
+    <rec key="click_input_adress_syn">id=addressLi,xpath=.//input</rec>
+    <rec key="click_bt_order_css">#checkout-review-table > tfoot > tr:nth-child(12) > td.a-right.last > button</rec>
+  </snippet>
+
+  <snippet id="newest_product_verify">
+    <rec key="get_myOrder_xpath">//*[@id="cart_pay"]/p[1]/a</rec>
+    <rec key="url_myOrderlist">http://www.thebeastshop.com/user/generalinfo.htm</rec>
+    <rec key="verify_myOrder_xpath">$get_myOrder_xpath,//*[@id="my-orders-table"]/tbody/tr[1]/td[1]/a</rec>
+  </snippet>
+
+  <snippet id="newest_product_cleanup">
+    <rec key="post_cancelOrder">13813758106,82533923cl,post,http://www.thebeastshop.com/order/orderCancel.htm,orderNo,$get_myOrder_xpath</rec>
+    <rec key="post_deleteOrder">13813758106,82533923cl,post,http://www.thebeastshop.com/order/orderDelete.htm,orderNo,$get_myOrder_xpath</rec>
+    <rec key="url_website">http://www.thebeastshop.com</rec>
+    <rec key="click_logout_css">#top>div>div.k-top-head>div.loginin>a</rec>
+  </snippet>
+
+  <var set="1" lvl="1" vid="1" cid="0" cls="ui.main.Flows.Flows" dsc="Verify the website can buy one newest goods">
+    <snipref id="newest_product_setup"/>
+    <snipref id="newest_product_run"/>
+    <snipref id="newest_product_verify"/>
+    <snipref id="newest_product_cleanup"/>
+  </var>
+<!--End======Verify the website can buy one newest goods-->
+
+
+  <grp cls="ui.main.WebsiteGroup.Group">
+    <rec key="website">http://www.thebeastshop.com</rec>
+    <rec key="chromedriver">../ui/depends/chromedriver</rec>
+  </grp>
+</varmap>

@@ -1,0 +1,19 @@
+<varmap assembly="" contact="673965587@qq.com" dsc="functionality test helper" owner="LeonChen" xmlns="https://github.com/leoche666/VarmapTemplate/functionTestTemplate.xml">
+    <snippet id="login_post">
+      <rec key="login_url">http://www.thebeastshop.com/user/dologin.htm</rec>
+      <rec key="user">13813758106</rec>
+      <rec key="password">82533923cl</rec>
+    </snippet>
+
+    <snippet id="cart_get">
+        <rec key="cart_url">http://www.thebeastshop.com/app/cart</rec>
+    </snippet>
+
+  <var set="1" lvl="1" vid="1" cid="0" cls="interface.Cart.Cart" dsc="Verify can query the cart if log in">
+    <snipref id="login_post"/>
+    <snipref id="cart_get"/>
+  </var>
+
+  <grp cls="interface.Group.Group">
+  </grp>
+</varmap>
