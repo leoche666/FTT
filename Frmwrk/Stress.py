@@ -1,16 +1,67 @@
 # -*- coding=utf-8 -*-
+import time
+import threading
+import gevent
+from functools import wraps
+CONCURRENCY = 1000
+'''
+Created on Sept 20, 2016
+@author: v-leoche
+@summary:pressure test with gevent
+'''
+def GvtStress(count=1,increment=100):
+    def outter_deco(func):
+        from gevent import monkey
+        monkey.patch_all()
+        from gevent.pool import Pool
+        pool = Pool(CONCURRENCY)
+
+        def run(i,target,*args,**kwargs):
+            for i in xrange(count):
+                pool.spawn(target, *args, **kwargs)
+            pool.join(timeout=60)
+
+        def switch(count,pool,target,*args,**kwargs):
+            i = count / CONCURRENCY
+            j = count % CONCURRENCY
+
+            if i == 0:
+                run(count,target,*args,**kwargs)
+
+            if i > 0 and j == 0:
+                for k in xrange(i):
+                    run(CONCURRENCY,target,*args,**kwargs)
+
+
+            if i > 0 and j > 0 :
+                for k in xrange(i):
+                    run(CONCURRENCY,target,*args,**kwargs)
+                run(j,target,*args,**kwargs)
+
+            print "当前并发数:%d" % count
+
+        @wraps(func)
+        def inner_deco(*args, **kwargs):
+            current = 0
+            while True:
+                if current >= count:
+                    break
+                else:
+                    current = current + increment
+                    switch(current,pool,func,*args, **kwargs)
+        return inner_deco
+    return outter_deco
+
+
 '''
 Created on Jan 4, 2016
 @author: v-leoche
-@summary:压力测试demo
+@summary:stress demo
 '''
-import time
-import threading
-
-class Stress(object):
+class TdStress(object):
     def __init__(self):
-        self._pool=[]
-        self._res_queue=[]
+        self._pool = []
+        self._res_queue = []
         self._error_count = 0
         self.lock = threading.Lock()
 
