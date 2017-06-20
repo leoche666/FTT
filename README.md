@@ -85,15 +85,6 @@ FTT支持多线程，你可以修改THREAD字段来启动多线程。你必须�
 		<!--松鼠会员-->
 		<rec key="user1">10000000001</rec>
 		<rec key="u1pwd">******</rec>	
-		<!--小猫会员-->
-		<rec key="user2">10000000002</rec>
-		<rec key="u2pwd">******</rec>
-		<!--老虎会员-->
-		<rec key="user3">10000000003</rec>
-		<rec key="u3pwd">******</rec>
-		<!--大象会员-->
-		<rec key="user4">10000000004</rec>
-		<rec key="u4pwd">******</rec>
 		<!--验证该商品的商品code-->
 		<rec key="prodId">16011122</rec> 
 		<!--获取一个商品信息的接口-->
@@ -111,6 +102,7 @@ FTT支持多线程，你可以修改THREAD字段来启动多线程。你必须�
 		<rec key="queryProdCodeByProdID">SELECT CODE from t_op_product WHERE id = {0}</rec>
 	</var>
 
+
 	<grp cls="interface.app.AppGroup.Group" permutation="rows">
 		<!--APP域名-->
 		<!--<rec key="host">http://api.thebeastshop.com</rec>-->
@@ -125,16 +117,6 @@ FTT支持多线程，你可以修改THREAD字段来启动多线程。你必须�
 	      <val>http://10.25.85.250:8180</val>
 	      <val>http://10.25.85.250:8280</val>
 	      <val>http://10.25.85.250:8380</val>
-	      <!--app3-web09-->
-	      <val>http://10.252.218.86:8080</val>
-	      <val>http://10.252.218.86:8180</val>
-	      <val>http://10.252.218.86:8280</val>
-	      <val>http://10.252.218.86:8380</val>
-	      <!--app4-web40-->
-	      <val>http://10.28.111.161:8080</val>
-	      <val>http://10.28.111.161:8180</val>
-	      <val>http://10.28.111.161:8280</val>
-	      <val>http://10.28.111.161:8380</val>
 	    </recm>
 		<!--HTTP数据传输类型-->
 		<rec key="Content-Type">application/json</rec>
@@ -147,16 +129,42 @@ FTT支持多线程，你可以修改THREAD字段来启动多线程。你必须�
 
 		<!--App的一些配置信息-->
 		<rec key="APPCHN">CHN2049</rec>
-
 	</grp>
 </varmap>
 ```
-![image](https://github.com/leoche666/FTT/blob/master/img-folder/xml.png)
 
-###这是运行时的日志
-![image](https://github.com/leoche666/FTT/blob/master/img-folder/log.png)
+### 这是运行时的日志
+```txt
+***LOG START***
 
-###这是运行结束之后的report
+2017-02-21 19:40:56 : Initiate the environment in AppGroup.Group.start
+2017-02-21 19:40:56 : 登陆成功,用户Token:98ab4ebd-924e-4e53-a8ad-e8ec95e57b2e
+vid:3171 lvl:22  cid:1  dsc:验证能获取app的配置服务
+2017-02-21 19:40:56 : host:http://api.thebeastshop.com
+2017-02-21 19:40:56 : 取出webviewDomainWhitelist:[u'online2.map.bdimg.com', u'online1.map.bdimg.com', u'online0.map.bdimg.com', u'api0.map.bdimg.com', u'api.map.baidu.com', u'222.73.134.99', u'114.55.100.159', u'static.thebeastshop.com', u'www.thebeastshop.com', u'api.thebeastshop.com', u'img.thebeastshop.com', u'192.168.20.71', u'192.168.20.102', u'static.tieba.baidu.com', u'online3.map.bdimg.com']
+2017-02-21 19:40:56 : 取出webviewVerifiedDomains:[u'www.thebeastshop.com', u'api.thebeastshop.com']
+2017-02-21 19:40:56 : 取出webviewCacheDomains:[u'static.thebeastshop.com']
+2017-02-21 19:40:56 : 取出entry:{u'shop': u'/app/app-shop/*/index-9dd6420.html', u'bridge': u'/app/bridge/*/index-604501f.html']
+验证能获取app的配置服务 : VAR_PASS
+
+vid:3175 lvl:22  cid:1  dsc:验证能够获取会员的信息
+2017-02-21 19:40:56 : {u'message': u'OK', u'code': u'200', u'data': {u'profile': {u'birthdayEditable': True, u'title': {u'id': 1, u'name': u'\u5148\u751f'}, u'nickName': u'\u9648\u5c0f\u4eae', u'birthday': None, u'avatarUrl': u''}, u'level': {u'id': -1, u'name': u'\u6ce8\u518c\u7528\u6237'}, u'mobile': u'13813758106', u'point': 0, u'createTime': 1478773774000, u'mobileAreaCode': u'+86', u'loginMethods': [{u'unionId': None, u'mobileAreaCode': u'+86', u'type': u'MOBILE', u'principal': u'13813758106'}], u'id': u'M502037165'}}
+验证能够获取会员的信息 : VAR_PASS
+
+2017-02-21 19:40:56 : Clean the environment in AppGroup.Group.end
+Vars expected    :[2]
+Vars passed      :[2]
+Vars aborted     :[0]
+Vars failed      :[0]
+Grps failed      :[0]
+Grps aborted     :[0]
+Vars unsupported :[0]
+Vars Not Run     :[0]
+
+***LOG DONE***
+```
+
+### 这是运行结束之后的report
 ![image](https://github.com/leoche666/FTT/blob/master/img-folder/Interface_report.png)
 
 ![image](https://github.com/leoche666/FTT/blob/master/img-folder/error_report.png)
