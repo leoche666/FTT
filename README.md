@@ -64,6 +64,93 @@ FTT支持多线程，你可以修改THREAD字段来启动多线程。你必须�
 
 
 ### 可以这样写你们测试用例
+```xml
+<varmap assembly="" contact="673965587@qq.com" dsc="functionality test helper" owner="LeonChen" xmlns="https://github.com/leoche666/VarmapTemplate/functionTestTemplate.xml">
+	<!--整张Varmap介绍
+	set=0为一个主流程的用例
+	set=1是一个基础用例  
+	set=2是一个购物车的用例
+    -->
+	<var set="0" lvl="1" vid="3171" cid="1" cls="interface.app.set0.AppConfig.Chip" dsc="验证能获取app的配置服务">
+		<!--config接口-->
+		<rec key="configUrl">/app/config</rec>
+		<!--确保webviewCacheDomains字段中含有下面的值-->
+		<rec key="webviewCacheDomains">static.thebeastshop.com</rec>
+	</var>    
+
+	<var set="1" lvl="1" vid="3132" cid="1" cls="interface.app.set1.ProdMemPrice.Chip" dsc="验证任一商品，注册会员、松鼠会员不打折，小猫会员打9.5折,老虎会员、大象会员打9折">
+		<!--注册会员-->
+		<rec key="user0">10000000000</rec>
+		<rec key="u0pwd">******</rec>
+		<!--松鼠会员-->
+		<rec key="user1">10000000001</rec>
+		<rec key="u1pwd">******</rec>	
+		<!--小猫会员-->
+		<rec key="user2">10000000002</rec>
+		<rec key="u2pwd">******</rec>
+		<!--老虎会员-->
+		<rec key="user3">10000000003</rec>
+		<rec key="u3pwd">******</rec>
+		<!--大象会员-->
+		<rec key="user4">10000000004</rec>
+		<rec key="u4pwd">******</rec>
+		<!--验证该商品的商品code-->
+		<rec key="prodId">16011122</rec> 
+		<!--获取一个商品信息的接口-->
+		<rec key="url">/app/product/{0}</rec>
+	</var>
+
+	<var set="2" lvl="1" vid="3159" cid="1" cls="interface.app.set2.GainProdInCrtUser.Chip" dsc="验证能获取当前用户的购物车的接口的数据并验证数据的正确性">
+		<!--接口-->
+		<rec key="gainUrl">/app/cart</rec>
+		<!--查询某用户购物车记录-->
+		<rec key="queryCartSql">SELECT spv_id,product_id,count from cart_pack WHERE owner_id = (SELECT ID from t_op_member WHERE CODE = '{0}')</rec>
+		<!--根据productid查询spvid-->
+		<rec key="querySpvIdByProdID">SELECT ID from t_op_prod_sku s where s.PRODUCT_ID = {0}</rec>
+		<!--根据productid查询productcode-->
+		<rec key="queryProdCodeByProdID">SELECT CODE from t_op_product WHERE id = {0}</rec>
+	</var>
+
+	<grp cls="interface.app.AppGroup.Group" permutation="rows">
+		<!--APP域名-->
+		<!--<rec key="host">http://api.thebeastshop.com</rec>-->
+		<recm key="host">
+		  <!--app1-web07-->
+	      <val>http://10.24.235.24:8080</val>
+	      <val>http://10.24.235.24:8180</val>
+	      <val>http://10.24.235.24:8280</val>
+	      <val>http://10.24.235.24:8380</val>
+	      <!--app2-web08-->
+	      <val>http://10.25.85.250:8080</val>
+	      <val>http://10.25.85.250:8180</val>
+	      <val>http://10.25.85.250:8280</val>
+	      <val>http://10.25.85.250:8380</val>
+	      <!--app3-web09-->
+	      <val>http://10.252.218.86:8080</val>
+	      <val>http://10.252.218.86:8180</val>
+	      <val>http://10.252.218.86:8280</val>
+	      <val>http://10.252.218.86:8380</val>
+	      <!--app4-web40-->
+	      <val>http://10.28.111.161:8080</val>
+	      <val>http://10.28.111.161:8180</val>
+	      <val>http://10.28.111.161:8280</val>
+	      <val>http://10.28.111.161:8380</val>
+	    </recm>
+		<!--HTTP数据传输类型-->
+		<rec key="Content-Type">application/json</rec>
+		<rec key="user">******</rec>
+		<rec key="password">******</rec>
+		<!--App登录接口-->
+		<rec key="auth">/app/authentication</rec>
+		<!--App登录方式-->
+		<rec key="authType">MOBILE</rec>
+
+		<!--App的一些配置信息-->
+		<rec key="APPCHN">CHN2049</rec>
+
+	</grp>
+</varmap>
+```
 ![image](https://github.com/leoche666/FTT/blob/master/img-folder/xml.png)
 
 ###这是运行时的日志
